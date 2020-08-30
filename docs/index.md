@@ -1,37 +1,39 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/zhiy1n/zhiy1n.github.io/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/zhiy1n/zhiy1n.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+class Dots{
+  PVector location;
+  PVector velocity;
+  color c;
+  int radius = 200;
+  
+  Dots(PVector _PV){
+    
+  location = _PV;
+  int j = (int)random(0,5);
+  if(j==0) c = color(#05CDE5);
+  if(j==1) c = color(#FFB803);
+  if(j==2) c = color(#FF835B);
+  if(j==3) c = color(#303E3E);
+  if(j==4) c = color(#D68FFF);
+  float xt = random(-0.01,0.01);
+  float yt = random(-0.01,0.01);
+  velocity = new PVector(xt,yt);
+  }
+  
+  void display(){
+  fill(c);
+  noStroke();
+  ellipse(location.x,location.y,2,2);
+  }
+  
+  void update(){
+    
+  if(dist(location.x,location.y,0,0)>radius){
+    
+     velocity.mult(-1);
+     location.add(velocity);
+  }
+  else{
+  
+    location.add(velocity);
+  }
+  }
+}
